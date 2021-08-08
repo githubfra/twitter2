@@ -15,7 +15,6 @@ ActiveAdmin.register User do
   # end
   
   index do
-    filter :created_at
     column :email
     column :username
     column :avatar
