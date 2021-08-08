@@ -8,7 +8,11 @@ class TweetsController < ApplicationController
   end
 
   def likes 
-    if @tweet.is_liked(current_user)
+    @tweet = Tweet.find(params[:tweet_id])
+    
+     puts "++++++like?:#{@tweet.is_liked(current_user)}"
+     puts "++++++user:#{current_user.inspect}"
+       if @tweet.is_liked(current_user) 
        @tweet.remove_like(current_user) 
     else 
       @tweet.like(current_user)

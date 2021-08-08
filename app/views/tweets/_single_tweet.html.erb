@@ -1,25 +1,26 @@
-<div class="col-12 border border-info p-3 mt-4" style="background-color: #EE82EE">
+<div class="col-10 border border-info p-3 mt-4" style="background-color: #D6EAF8">
     <div>
-       <%= link_to '<i class="far fa-calendar-times"></i>'.html_safe+time_ago_in_words(tweet.created_at), tweet %>
+       <%= link_to '<i class="far fa-calendar-times"></i>'.html_safe+time_ago_in_words(tweet.created_at), tweet_path(tweet) %>
     </div>    
-     <%= image_tag (tweet.user.avatar), :class => "avatar-in-tweet rounded"%>
-     <%= tweet.content %>
+     <%= image_tag (tweet.user.avatar), :class => "avatar-in-tweet rounded"%>  
+     <% if user_signed_in? && current_user != tweet.user %>
+     <div>
+     <% if current_user.is_following?(tweet.user_id) %>
+         <%= link_to "<i class='fas fa-users-slash'></i>".html_safe, users_follow_path(tweet.user_id), method: :post %>
+     <% else %>    
+        <%= link_to "<i class='fas fa-user-friends'></i>".html_safe, users_follow_path(tweet.user_id), method: :post %>
+     <% end %>   
+     </div>  
+     <% end %> 
+     <%= tweet.content.html_safe %>  
      <br/>
      <div class="d-inline">
-         <% if tweet.is_liked(current_user) %>
-              <%= link_to "<i class='fas fa-hand-holding-heart'></i>".html_safe, tweet_likes_path(tweet), method: :post %>
-         <% else %>
-               <%= link_to "<i class='far fa-heart'></i>".html_safe, tweet_likes_path(tweet), method: :post %>
-        <% end %>         
-        <%= tweet.likes.count %> 
+          <%= link_to "<i class='fas fa-#{tweet.like_icon(current_user)}'></i>".html_safe, tweet_likes_path(tweet), method: :post, class: "text-danger" %>
+          <%= tweet.likes.count %> 
      </div>
-     <div class="float-right">
-          <%= tweet.count_rt %> 
-          <% if tweet.count_rt > 0 %> 
-            <%= link_to '<i class="fas fa-retweet"></i>'.html_safe, tweet_retweet_path(tweet), method: :post %>
-          <% else %>
-            <%= link_to '<i class="fas fa-retweet text-dark"></i>'.html_safe, tweet_retweet_path(tweet), method: :post %>
-          <% end %>  
+     <div class="float-right">  
+          <%= tweet.count_rt %>  
+            <%= link_to "<i class='fas fa-retweet text-#{tweet.retweet_color}'></i>".html_safe, tweet_retweet_path(tweet), method: :post %>
           <% if tweet.is_retweet? %>
            <%= link_to "Retweet...", tweet.tweet_ref %>
           <% end %> 

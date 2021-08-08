@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'kaminari'
+gem 'activeadmin'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
