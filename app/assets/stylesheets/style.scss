@@ -1,3 +1,11 @@
+body {
+    background-color: #9BF6FF !important;
+    font-family: 'Rubik', sans-serif !important;
+    font-weight: bold;
+}
+
+
+
 .avatar-in-tweet {
     width: 50px;
 }
@@ -12,3 +20,40 @@ footer {
   
  }
 
+ .navbar-brand {
+    width: 50px;
+    height: 50px; 
+    display: inline-block;
+    padding-top: 6.25 rem;
+    padding-bottom: 6.25 rem;
+    margin-right: 1rem;
+    line-height: inherit;
+    white-space: nowrap;
+    font-weight: bold;
+   }
+
+img {
+    width: 50px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.fondo2 {
+       background-color: lightblue;
+
+    }
+       
+   
+.bg-custom {
+    background-color: #FFC6FF
+}
+.rounded-custom {
+    border-radius: 25px;
+}
+.buttom-color {
+  background-color: #A0C4FF;
+}
+.single-t {
+     
+    background-color: #FDFFB6;
+ }

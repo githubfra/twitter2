@@ -1,4 +1,4 @@
-<%= form_with(model: tweet, local: true, :class => "w-100 mb-3") do |form| %>
+<%= form_with(model: tweet, local: true, :class => "col-9 w-100 mb-2") do |form| %>
   <% if tweet.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="form-group">
+  <div class="form-group w-100 mt-3">
     <b><%= current_user.username %> says:</b> <br/>
     <%= form.text_area :content, :class => "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit "Save", :class => "btn btn-primary" %>
+    <%= form.submit "Save", :class => "btn buttom-color" %>
   </div>
 <% end %>
